@@ -1,7 +1,7 @@
 import random
 import string
 
-def generate_password(min_length, numbers=True, special_charactera=True):
+def generate_password(min_length, numbers=True, special_characters=True):
     letters = string.ascii_letters
     digits = string.digits
     special = string.punctuation
@@ -9,7 +9,7 @@ def generate_password(min_length, numbers=True, special_charactera=True):
     characters = letters
     if numbers:
         characters += digits
-    if special_charactera:
+    if special_characters:
         characters += special
     
     pwd = ""
@@ -28,9 +28,15 @@ def generate_password(min_length, numbers=True, special_charactera=True):
         
         meets_criteria = True
         if numbers:
-            meets_criteria = has_number
-        if special_charactera:
+            meets_criteria = has_number50
+        if special_characters:
             meets_criteria = meets_criteria and has_special
 
+    return pwd
 
-generate_password(10) 
+min_length = int(input("Enter min length: "))
+has_number = input("Numbers ?: ").lower() == 'y'
+has_special = input("Special ?: ").lower() == 'y'
+
+pwd = generate_password(min_length, has_number, has_special) 
+print(pwd)
